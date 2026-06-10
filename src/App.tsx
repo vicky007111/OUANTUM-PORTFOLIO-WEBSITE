@@ -3,6 +3,7 @@ import Header from './components/common/Header'
 import Footer from './components/common/Footer'
 import Chatbot from './components/common/Chatbot'
 import ErrorBoundary from './components/common/ErrorBoundary'
+import LoaderOverlay from './components/LoaderOverlay'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import SecurityTerms from './pages/SecurityTerms'
@@ -20,6 +21,7 @@ import './styles/global.css'
 function App() {
   return (
     <ErrorBoundary>
+      <LoaderOverlay />
       <Router>
         <div className="app-wrapper">
           <Header />
