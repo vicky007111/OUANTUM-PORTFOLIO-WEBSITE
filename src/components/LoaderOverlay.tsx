@@ -73,43 +73,43 @@ const LoaderOverlay: React.FC<LoaderOverlayProps> = ({ forceShow }) => {
       gsap.set(progressBarRef.current, { scaleX: 0, transformOrigin: 'left', force3D: true });
       gsap.set(logoImgRef.current, { opacity: 0, force3D: true });
 
-      // 2. Progress wipe (duration: 1.2s, ease: power2.inOut)
+      // 2. Progress wipe (duration: 1.6s, ease: power2.inOut) - slightly speed up first slide
       tl.to(textOverlayRef.current, {
         width: '100%',
-        duration: 1.2,
+        duration: 1.6,
         ease: 'power2.inOut',
         force3D: true,
       });
       tl.to(progressBarRef.current, {
         scaleX: 1,
-        duration: 1.2,
+        duration: 1.6,
         ease: 'power2.inOut',
         force3D: true,
       }, '<'); // simultaneously
 
-      // 3. Fade out Slide 1 (duration: 0.3s, starts 0.1s after wipe)
+      // 3. Smooth fade out of Slide 1 (duration: 0.6s, starts 0.2s after wipe completes)
       tl.to([textContainerRef.current, progressBarRef.current], {
         opacity: 0,
-        duration: 0.3,
-        ease: 'power1.inOut',
+        duration: 0.6,
+        ease: 'power2.inOut',
         force3D: true,
-      }, '+=0.1');
+      }, '+=0.2');
 
-      // 4. Fade in Slide 2 logo (duration: 1.0s, overlaps Slide 1 fade out by 0.2s for cross-fade)
+      // 4. Smooth fade in of Slide 2 logo (duration: 0.7s, starts 0.2s after Slide 1 is completely faded out)
       tl.to(logoImgRef.current, {
         opacity: 1,
-        duration: 1.0,
-        ease: 'power1.inOut',
+        duration: 0.7,
+        ease: 'power2.inOut',
         force3D: true,
-      }, '-=0.2');
+      }, '+=0.2');
 
-      // 5. Curtain exit (duration: 0.8s, starts 0.6s after logo fade completes)
+      // 5. Curtain exit (duration: 0.8s, starts 0.8s after logo fade completes)
       tl.to(overlayRef.current, {
         yPercent: -100,
-        duration: 0.8,
+        duration: 1.0,
         ease: 'power3.inOut',
         force3D: true,
-      }, '+=0.6');
+      }, '+=0.8');
     });
 
     return () => {
