@@ -5,6 +5,7 @@ import aiEngineerImages from '../data/aiEngineerImages';
 import dataEngineerImages from '../data/dataEngineerImages';
 import fullStackDeveloperImages from '../data/fullStackDeveloperImages';
 import { CanvasMarquee } from '../components/CanvasMarquee';
+import { InteractiveSlider } from '../components/InteractiveSlider';
 
 const BASE_URL = 'https://ouantum.com';
 
@@ -58,6 +59,13 @@ const team = [
     image: '/assets/images/sabari.jpeg',
     initials: 'SR',
     bio: 'Sabari is the frontline interface between Ouantum and every civil engineering firm we serve. He qualifies projects, maps client pain to our capability stack, and ensures the right team is in the room before a single rupee changes hands.\n\nIf you are evaluating Ouantum for your next project, Sabari is your first call.',
+  },
+  {
+    role: 'PROJECT MANAGER',
+    name: 'VIGNESH SELVAA K S',
+    image: '/assets/images/vignesh_profile.png',
+    initials: 'VS',
+    bio: 'Vignesh handles project delivery and execution at Ouantum. He manages multiple projects simultaneously, streamlining coordination between site engineers, structural auditors, and our internal AI development teams.\n\nHis operational focus ensures that data collection runs smoothly and reports are generated on schedule, maintaining Ouantum\'s commitment to speed and accuracy.',
   },
 ];
 
@@ -155,6 +163,7 @@ const EngineerSection = ({
   title: string;
   eyebrow: string;
 }) => {
+  const useSlider = images.length <= 6;
   const marqueeImages = images.map((src, i) => ({ src, alt: `${title} ${i + 1}` }));
 
   return (
@@ -181,14 +190,25 @@ const EngineerSection = ({
       <div className="about-team-rule" aria-hidden="true" />
 
       <div className="about-eng-marquee-outer" aria-hidden="true">
-        <CanvasMarquee
-          images={marqueeImages}
-          imageWidth={200}
-          imageHeight={300}
-          gap={16}
-          speed={60}
-          borderRadius={16}
-        />
+        {useSlider ? (
+          <InteractiveSlider
+            images={images}
+            title={title}
+            imageWidth={240}
+            imageHeight={360}
+            gap={20}
+            borderRadius={16}
+          />
+        ) : (
+          <CanvasMarquee
+            images={marqueeImages}
+            imageWidth={240}
+            imageHeight={360}
+            gap={20}
+            speed={60}
+            borderRadius={16}
+          />
+        )}
       </div>
     </section>
   );

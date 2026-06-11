@@ -56,27 +56,28 @@ export function CanvasMarquee({
       img.src = imgData.src;
 
       const draw = () => {
-        const oc = new OffscreenCanvas(imageWidth, imageHeight);
+        const oc = new OffscreenCanvas(imageWidth * DPR, imageHeight * DPR);
         const octx = oc.getContext('2d')!;
+        octx.scale(DPR, DPR);
 
         // Rounded clip
         octx.beginPath();
         octx.roundRect(0, 0, imageWidth, imageHeight, borderRadius);
         octx.clip();
-        
+
         // Emulate filter: grayscale(20%) which was in CSS
         octx.filter = 'grayscale(20%)';
-        
+
         // Draw image covering the rect
         // object-fit: cover logic for 2:3 aspect ratio
         const imgAspect = img.width / img.height;
         const canvasAspect = imageWidth / imageHeight;
-        
+
         let drawWidth = imageWidth;
         let drawHeight = imageHeight;
         let offsetX = 0;
         let offsetY = 0;
-        
+
         if (imgAspect > canvasAspect) {
           // Image is wider than canvas
           drawWidth = imageHeight * imgAspect;

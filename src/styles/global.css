@@ -3967,13 +3967,19 @@ section {
 @media (max-width: 768px) {
 
   /* Text Reduction Utilities */
-  .desktop-only { display: none !important; }
+  .desktop-only {
+    display: none !important;
+  }
 }
+
 @media (min-width: 769px) {
-  .mobile-only { display: none !important; }
+  .mobile-only {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
+
   /* Global Padding */
   section {
     padding: 60px 0 !important;
@@ -4241,11 +4247,13 @@ section {
   top: 1.25rem;
   right: 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.2);
+  color: #000000;
+  font-weight: 700;
   text-transform: uppercase;
   z-index: 10;
+  opacity: 0.65;
 }
 
 /* Bio panel — 2 columns: photo | text */
@@ -4636,20 +4644,16 @@ section {
   overflow: hidden;
   margin-top: 2.5rem;
   cursor: default;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
 }
 
 
@@ -4695,22 +4699,22 @@ section {
     min-width: 100% !important;
     display: block;
   }
-  
+
   .telemetry-thead {
     display: none;
   }
-  
+
   .telemetry-tbody {
     display: block;
     width: 100%;
   }
-  
+
   .telemetry-row {
     display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 1rem 0;
   }
-  
+
   .telemetry-cell {
     display: flex;
     justify-content: space-between;
@@ -4718,12 +4722,12 @@ section {
     padding: 0.75rem 1rem !important;
     text-align: right;
   }
-  
+
   .telemetry-cell::before {
     content: attr(data-label);
     font-family: var(--font-mono);
     font-weight: 600;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     padding-right: 1rem;

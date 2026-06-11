@@ -11,6 +11,8 @@ const fullStackDeveloperImages: string[] = [
   '/assets/images/fullstack-developers/fs-dev-1.webp',
   '/assets/images/fullstack-developers/fs-dev-poster-1.webp',
   '/assets/images/fullstack-developers/fs-dev-poster.webp',
+  '/assets/images/fullstack-developers/5.webp',
+  '/assets/images/fullstack-developers/6.webp'
 ];
 
 export default fullStackDeveloperImages;
